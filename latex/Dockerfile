@@ -11,4 +11,6 @@ RUN apt-get update && apt-get install -y \
   apt-get --purge remove -y .\*-doc$ && \
   # Remove more unnecessary stuff
   apt-get clean -y
-
+  # Add latexmkrc to always use shell-escape for inkscape
+  echo "\$latex = 'latex  %O  --shell-escape %S';" | tee ~/.latexmkrc
+  echo "\$pdflatex = 'pdflatex  %O  --shell-escape %S';" | tee -a ~/.latexmkrc
